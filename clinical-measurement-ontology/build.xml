@@ -1,0 +1,5 @@
+<project name="clinical-measurement-ontology" default="default" basedir=".">
+  <description>build, test, package clinical-measurement-ontology</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

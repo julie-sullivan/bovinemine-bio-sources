@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<classes>
+    <class name="SequenceFeature" extends="BioEntity" is-interface="true">
+        <collection name="aliases" referenced-type="AliasName" reverse-reference="features"/>
+    </class>
+    <class name="AliasName" is-interface="true">
+        <attribute name="name" type="java.lang.String"/>
+        <attribute name="source" type="java.lang.String"/>
+        <attribute name="identifier" type="java.lang.String"/>
+        <reference name="organism" referenced-type="Organism"/>
+        <collection name="dataSets" referenced-type="DataSet"/>
+        <collection name="features" referenced-type="SequenceFeature" reverse-reference="aliases"/>
+    </class>
+</classes>

@@ -1,0 +1,4 @@
+<project name="broken-ogs-tasks" default="default" basedir=".">
+  <description>build broken-ogs tasks</description>
+  <import file="../../../../imbuild/library.xml"/> 
+</project>

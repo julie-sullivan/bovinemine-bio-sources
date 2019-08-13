@@ -1,0 +1,5 @@
+<project name="refseq-noncoding-gff" default="default" basedir=".">
+  <description>build, test, package refseq-noncoding-gff</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

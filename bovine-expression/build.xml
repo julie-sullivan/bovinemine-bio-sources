@@ -1,0 +1,5 @@
+<project name="bovine-expression" default="default" basedir=".">
+  <description>build, test, package bovine-expression</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

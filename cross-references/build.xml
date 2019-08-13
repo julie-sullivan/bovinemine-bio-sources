@@ -1,0 +1,5 @@
+<project name="cross-references" default="default" basedir=".">
+  <description>build, test, package cross-references</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

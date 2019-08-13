@@ -1,0 +1,5 @@
+<project name="aliasesTranscript" default="default" basedir=".">
+  <description>build, test, package aliasesTranscript</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

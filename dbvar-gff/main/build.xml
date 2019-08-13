@@ -1,0 +1,4 @@
+<project name="dbvar-gff-tasks" default="default" basedir=".">
+  <description>build dbvar-gff tasks</description>
+  <import file="../../../../imbuild/library.xml"/> 
+</project>

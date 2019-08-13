@@ -1,0 +1,5 @@
+<project name="livestock-breed-ontology" default="default" basedir=".">
+  <description>build, test, package livestock-breed-ontology</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

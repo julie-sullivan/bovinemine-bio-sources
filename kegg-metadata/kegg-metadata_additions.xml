@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
+
+<classes>
+    <class name="Pathway" is-interface="true" >
+  <attribute name="identifier" type="java.lang.String"/>
+  <attribute name="pathwayClass" type="java.lang.String"/>
+  <attribute name="pathwayMap" type="java.lang.String"/>
+  <attribute name="bsid" type="java.lang.String"/>
+  <attribute name="koPathway" type="java.lang.String"/>
+  <attribute name="description" type="java.lang.String"/>
+ <collection name="publications" referenced-type="Publication"/>
+ <collection name="goAnnotation" referenced-type="GOAnnotation"/>
+</class>
+</classes>

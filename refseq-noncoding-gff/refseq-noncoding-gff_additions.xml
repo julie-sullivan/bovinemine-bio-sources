@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
+
+<classes>
+    <class name="Transcript" extends="SequenceFeature" is-interface="true"/>
+    <class name="PrimaryTranscript" extends="Transcript" is-interface="true">
+        <attribute name="mirbaseIdentifier" type="java.lang.String"/>
+        <attribute name="biotype" type="java.lang.String"/>
+        <collection name="matureTranscripts" referenced-type="MatureTranscript"/>
+    </class>
+    <class name="MiRNA" extends="NcRNA" is-interface="true">
+        <attribute name="mirbaseIdentifier" type="java.lang.String"/>
+    </class>
+    <class name="NcRNA" extends="Transcript" is-interface="true">
+        <attribute name="mirbaseIdentifier" type="java.lang.String"/>
+    </class>
+    <class name="MatureTranscript" is-interface="true">
+        <attribute name="chromosome" type="java.lang.String"/>
+        <attribute name="start" type="java.lang.Integer"/>
+        <attribute name="end" type="java.lang.Integer"/>
+        <attribute name="strand" type="java.lang.Integer"/>
+        <attribute name="transcriptIdentifier" type="java.lang.String"/>
+        <attribute name="mirbaseIdentifier" type="java.lang.String"/>
+        <attribute name="description" type="java.lang.String"/>
+    </class>
+</classes>

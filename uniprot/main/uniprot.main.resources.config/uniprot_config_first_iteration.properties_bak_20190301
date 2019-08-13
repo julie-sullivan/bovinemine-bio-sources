@@ -1,0 +1,74 @@
+# uniprot_config.properties - for each organism, configure where to get identifiers for genes and
+# which field should be unique.  Also, which features to load
+#
+# you can configure:
+# a. which gene field must be unique
+# b. where in the XML file to get the gene's identifier
+#
+# ~ a. UNIQUE FIELD ~
+# [taxonId].uniqueField = primaryIdentifier / secondaryIdentifier
+# * defines which field should be unique
+#
+# ~ b. IDENTIFIERS ~
+# [taxonId].[identifierType].[where to get the identifier]
+#
+# identifierType = primaryIdentifier / secondaryIdentifier
+# where to get the identifier 	= dbref / name
+#  * dbref
+# 		use identifier from the dbref section of the XML. eg:
+# 		7227.primaryIdentifier.dbref = FlyBase
+# 		will use:  <dbref db="FlyBase" id="FBgn0000606"/>
+#   * gene designation
+#       use the value in the "gene designation" section
+#       6239.primaryIdentifier.gene-designation = WormBase
+#		6239.gene-designation = gene ID
+#		will use WBGene00020142
+#		<dbReference type="WormBase" id="T01C8.1b" key="39">
+#		<property type="protein sequence ID" value="CE31223"/>
+#		<property type="gene ID" value="WBGene00020142"/>
+#		<property type="gene designation" value="aak-2"/>
+#		</dbReference>
+#	* name
+#		get the identifier from the <names> section of the XML. eg:
+# 		6239.secondaryIdentifier.name = ORF
+#		will set CG2328 as the gene.secondaryIdentifier:
+#			<gene>
+#				<name type="primary">eve</name>
+#				<name type="ORF">CG2328</name>
+#			</gene>
+
+# if we find an organism not configured in this file
+# please don't remove!
+default.uniqueField = primaryIdentifier
+default.primaryIdentifier.dbref = Ensembl
+
+# btau
+#9913.uniqueField = primaryIdentifier
+#9913.primaryIdentifier.gene-designation = RefSeq
+#9913.gene-designation = nucleotide sequence ID
+
+# btauv2
+#9913.primaryIdentifier.gene-designation = RefSeq-UMD3.1.1
+9913.uniqueField = primaryIdentifier
+9913.primaryIdentifier.dbref = GeneID
+
+# sheep
+9940.uniqueField = primaryIdentifier
+9940.primaryIdentifier.dbref = GeneID
+
+#goat
+9925.uniqueField = primaryIdentifier
+9925.primaryIdentifier.dbref = GeneID
+
+# human
+9606.uniqueField = primaryIdentifier
+9606.primaryIdentifier.dbref = Ensembl
+
+# mouse
+10090.uniqueField = primaryIdentifier
+10090.primaryIdentifier.dbref = Ensembl
+
+# rat
+10116.uniqueField = primaryIdentifier
+10116.primaryIdentifier.dbref = Ensembl
+

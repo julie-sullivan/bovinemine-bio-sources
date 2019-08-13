@@ -1,0 +1,5 @@
+<project name="uber-anatomy-ontology" default="default" basedir=".">
+  <description>build, test, package uber-anatomy-ontology</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

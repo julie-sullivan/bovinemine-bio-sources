@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
+
+<classes>
+<!-- add any <class> elements here -->
+    <class name="SequenceAlteration" extends="SequenceFeature" is-interface="true">
+    </class>
+    <class name="CopyNumberVariation" extends="SequenceAlteration" is-interface="true">
+        <!-- End_range (treated as innerStop), Name (name), Start_range (treated as innerStart), gender (gender), remapScore (remapScore), sample_name (sampleName), validated (validationStatus) -->
+        <attribute name="innerStartCoordinate" type="java.lang.String"/>
+        <attribute name="outerStartCoordinate" type="java.lang.String"/>
+        <attribute name="innerStopCoordinate" type="java.lang.String"/>
+        <attribute name="outerStopCoordinate" type="java.lang.String"/>
+        <attribute name="validationStatus" type="java.lang.String"/>
+        <attribute name="sampleName" type="java.lang.String"/>
+        <attribute name="gender" type="java.lang.String"/>
+        <attribute name="remapScore" type="java.lang.String"/>
+        <attribute name="phenotype" type="java.lang.String"/>
+        <attribute name="isComplexSubstitution" type="java.lang.String"/>
+        <collection name="copyNumberGainFeatures" referenced-type="CopyNumberGain" reverse-reference="parent"/>
+        <collection name="copyNumberLossFeatures" referenced-type="CopyNumberLoss" reverse-reference="parent"/>
+        <collection name="deletions" referenced-type="Deletion" reverse-reference="parent"/>
+        <collection name="inversions" referenced-type="Inversion" reverse-reference="parent"/>
+    </class>
+    <class name="CopyNumberGain" extends="CopyNumberVariation" is-interface="true">
+        <attribute name="copyNumber" type="java.lang.String"/>
+        <reference name="parent" referenced-type="CopyNumberVariation" reverse-reference="copyNumberGainFeatures"/>
+    </class>
+    <class name="CopyNumberLoss" extends="CopyNumberVariation" is-interface="true">
+        <attribute name="copyNumber" type="java.lang.String"/>
+        <reference name="parent" referenced-type="CopyNumberVariation" reverse-reference="copyNumberLossFeatures"/>
+    </class>
+    <class name="Deletion" extends="CopyNumberVariation" is-interface="true">
+        <attribute name="sampleName" type="java.lang.String"/>
+        <attribute name="remapScore" type="java.lang.String"/>
+        <attribute name="phenotype" type="java.lang.String"/>
+        <reference name="parent" referenced-type="CopyNumberVariation" reverse-reference="deletions"/>
+    </class>
+    <class name="Inversion" extends="CopyNumberVariation" is-interface="true">
+        <attribute name="sampleName" type="java.lang.String"/>
+        <attribute name="remapScore" type="java.lang.String"/>
+        <attribute name="phenotype" type="java.lang.String"/>
+        <reference name="parent" referenced-type="CopyNumberVariation" reverse-reference="inversions"/>
+    </class>
+    <class name="TandemDuplication" extends="SequenceAlteration" is-interface="true">
+        <attribute name="sampleName" type="java.lang.String"/>
+        <attribute name="remapScore" type="java.lang.String"/>
+        <attribute name="phenotype" type="java.lang.String"/>
+        <collection name="variantCalls" referenced-type="TandemDuplicationVariant" reverse-reference="parent"/>
+    </class>
+    <class name="TandemDuplicationVariant" extends="SequenceAlteration" is-interface="true">
+        <attribute name="name" type="java.lang.String"/>
+        <attribute name="source" type="java.lang.String"/>
+        <attribute name="sampleName" type="java.lang.String"/>
+        <attribute name="remapScore" type="java.lang.String"/>
+        <attribute name="phenotype" type="java.lang.String"/>
+        <reference name="parent" referenced-type="TandemDuplication" reverse-reference="variantCalls"/>
+    </class>
+</classes>

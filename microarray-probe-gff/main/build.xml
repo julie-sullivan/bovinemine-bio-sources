@@ -1,0 +1,4 @@
+<project name="microarray-probe-gff-tasks" default="default" basedir=".">
+  <description>build microarray-probe-gff tasks</description>
+  <import file="../../../../imbuild/library.xml"/> 
+</project>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<classes>
+<class name="Reaction" is-interface="true" >
+  <attribute name="identifier" type="java.lang.String"/>
+  <attribute name="name" type="java.lang.String"/>
+  <attribute name="subsystem" type="java.lang.String"/>
+  <attribute name="description" type="java.lang.String"/>
+  <collection name="genes" referenced-type="Gene" reverse-reference="reactions"/>
+  <collection name="dataSets" referenced-type="DataSet"/>
+</class>
+<class name="Gene" is-interface="true">
+  <collection name="reactions" referenced-type="Reaction" reverse-reference="genes"/>
+</class>
+</classes>

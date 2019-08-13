@@ -1,0 +1,4 @@
+<project name="treefam-extended-tasks" default="default" basedir=".">
+  <description>build treefam-extended tasks</description>
+  <import file="../../../../imbuild/library.xml"/> 
+</project>

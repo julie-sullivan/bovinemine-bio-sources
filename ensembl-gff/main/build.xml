@@ -1,0 +1,4 @@
+<project name="ensembl-gff-tasks" default="default" basedir=".">
+  <description>build ensembl-gff tasks</description>
+  <import file="../../../../imbuild/library.xml"/> 
+</project>

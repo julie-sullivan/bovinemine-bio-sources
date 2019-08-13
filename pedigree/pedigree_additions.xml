@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
+
+<classes>
+<!-- add any <class> elements here -->
+    <class name="Relationships" is-interface="true">
+    <attribute name="type" type="java.lang.String"/>
+        <reference name="individual" referenced-type="Individual" reverse-reference="relationships"/>
+        <reference name="relationships" referenced-type="Individual"/>
+        <collection name="dataSets" referenced-type="DataSet"/>
+        <reference name="relationshiplookup" referenced-type="Relationshiplookup" reverse-reference="relationships"/>
+    </class>
+    <class name="Individual" is-interface="true">
+    <reference name="organism" referenced-type="Organism"/>
+        <attribute name="primaryIdentifier" type="java.lang.String"/>
+        <reference name="relationshiplookup" referenced-type="Relationshiplookup" reverse-reference="individual"/>
+        <collection name="relationships" referenced-type="Relationships" reverse-reference="individual"/>
+    </class>
+
+    <class name="Relationshiplookup" is-interface="true">
+        <attribute name="primaryIdentifier" type="java.lang.String"/>
+        <reference name="individual" referenced-type="Individual" reverse-reference="relationshiplookup"/>
+        <reference name="relationships" referenced-type="Relationships" reverse-reference="relationshiplookup"/>
+    </class>
+
+
+</classes>

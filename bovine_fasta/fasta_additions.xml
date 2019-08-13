@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<classes>
+  <class name="Chromosome" extends="SequenceFeature" is-interface="true">
+    <attribute name="assembly" type="java.lang.String"/>
+  </class>
+  <class name="Gene" extends="SequenceFeature" is-interface="true">
+    <collection name="polypeptides" referenced-type="Polypeptide" reverse-reference="gene"/>
+  </class>
+  <class name="MRNA" extends="Transcript" is-interface="true">
+    <collection name="polypeptide" referenced-type="Polypeptide" reverse-reference="mrna"/>
+  </class>
+  <class name="Polypeptide" extends="SequenceFeature" is-interface="true">
+    <attribute name="geneIdentifier" type="java.lang.String"/>
+    <attribute name="mrnaIdentifier" type="java.lang.String"/>
+    <reference name="gene" referenced-type="Gene" reverse-reference="polypeptides"/>
+    <reference name="mrna" referenced-type="MRNA" reverse-reference="polypeptide"/>
+  </class>
+</classes>

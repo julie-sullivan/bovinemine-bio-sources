@@ -1,0 +1,5 @@
+<project name="repeat-region-gff" default="default" basedir=".">
+  <description>build, test, package repeat-region-gff</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

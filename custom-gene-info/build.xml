@@ -1,0 +1,5 @@
+<project name="custom-gene-info" default="default" basedir=".">
+  <description>build, test, package custom-gene-info</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

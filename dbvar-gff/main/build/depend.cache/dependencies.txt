@@ -1,0 +1,16 @@
+||:org.intermine.bio.dataconversion.DbvarGffGFF3RecordHandler
+java.io.PrintStream
+java.util.Iterator
+org.intermine.bio.io.gff3.GFF3Record
+java.lang.System
+java.util.Collection
+java.util.HashMap
+java.util.ArrayList
+org.intermine.xml.full.Item
+org.intermine.metadata.StringUtil
+java.util.List
+org.intermine.bio.dataconversion.DbvarGffGFF3RecordHandler
+org.intermine.bio.dataconversion.GFF3RecordHandler
+java.util.Map
+java.lang.StringBuilder
+java.lang.String

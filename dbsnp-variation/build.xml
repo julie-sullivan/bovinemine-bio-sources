@@ -1,0 +1,29 @@
+<project name="dbsnp-variation" default="default" basedir=".">
+  <description>build, test, package dbsnp-variation</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+  <!-- no retrieve -->
+  <target name="retrieve"/>
+
+  <target name="-init-loader-classname" unless="dbsnp-variation.loaderClassName">
+    <!-- set the default -->
+    <property name="dbsnp-variation.loaderClassName"
+              value="org.intermine.bio.dataconversion.DbsnpVariationDirectDataLoaderTask"/>
+  </target>
+
+  <target name="load" depends="-init-loader-classname, init, -init-deps">
+    <taskdef name="read-dbsnp-variation"
+             classname="${dbsnp-variation.loaderClassName}"
+             classpathref="task.class.path"/>
+    <!-- geneSource="${dbsnp-variation.geneSource}" -->
+    <read-dbsnp-variation integrationWriterAlias="integration.production"
+                          taxonId="${taxonId}"
+			  geneSource="${dbsnp-variation.geneSource}"
+                          sourceName="${source.name}"
+                          sourceType="${source.type}">
+      <fileset dir="${src.data.dir}" includes="${src.data.dir.includes}"/>
+    </read-dbsnp-variation>
+  </target>
+
+</project>
+

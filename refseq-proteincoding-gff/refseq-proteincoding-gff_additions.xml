@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
+
+<classes>
+    <class name="Location" is-interface="true">
+        <attribute name="doNotComputeOverlaps" type="java.lang.String"/>
+    </class>
+    <class name="SequenceFeature" extends="BioEntity" is-interface="true">
+        <attribute name="status" type="java.lang.String"/>
+        <attribute name="source" type="java.lang.String"/>
+        <collection name="aliases" referenced-type="AliasName" reverse-reference="features"/>
+        <collection name="dbCrossReferences" referenced-type="xRef"/>
+    </class>
+    <class name="Gene" extends="SequenceFeature" is-interface="true">
+        <attribute name="biotype" type="java.lang.String"/>
+        <collection name="duplicateEntities" referenced-type="DuplicateEntity"/>
+    </class>
+    <class name="Transcript" extends="SequenceFeature" is-interface="true">
+        <attribute name="description" type="java.lang.String"/>
+        <attribute name="biotype" type="java.lang.String"/>
+    </class>
+    <class name="MRNA" extends="Transcript" is-interface="true">
+        <attribute name="proteinIdentifier" type="java.lang.String"/>
+    </class>
+    <class name="DuplicateEntity" is-interface="true">
+        <attribute name="geneIdentifier" type="java.lang.String"/>
+        <attribute name="chromosome" type="java.lang.String"/>
+        <attribute name="start" type="java.lang.Integer"/>
+        <attribute name="end" type="java.lang.Integer"/>
+        <attribute name="strand" type="java.lang.Integer"/>
+        <attribute name="proteinIdentifier" type="java.lang.String"/>
+        <attribute name="transcriptIdentifier" type="java.lang.String"/>
+        <reference name="organism" referenced-type="Organism"/>
+    </class>
+    <class name="CDS" extends="SequenceFeature" is-interface="true">
+        <attribute name="hasEarlyStopCodon" type="java.lang.String"/>
+    </class>
+    <class name="AliasName" is-interface="true">
+        <attribute name="name" type="java.lang.String"/>
+        <attribute name="identifier" type="java.lang.String"/>
+        <attribute name="source" type="java.lang.String"/>
+        <reference name="organism" referenced-type="Organism"/>
+        <collection name="features" referenced-type="SequenceFeature" reverse-reference="aliases"/>
+    </class>
+    <class name="xRef" is-interface="true">
+        <attribute name="name" type="java.lang.String"/>
+        <attribute name="source" type="java.lang.String"/>
+        <attribute name="refereeSource" type="java.lang.String"/>
+        <reference name="organism" referenced-type="Organism"/>
+        <reference name="referrer" referenced-type="Gene"/>
+        <reference name="referee" referenced-type="Gene"/>
+    </class>
+</classes>

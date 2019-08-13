@@ -1,0 +1,17 @@
+||:org.intermine.bio.dataconversion.AliasesTranscriptConverter
+java.io.PrintStream
+org.intermine.bio.dataconversion.BioFileConverter
+java.util.Iterator
+java.lang.System
+java.util.Set
+java.util.HashMap
+java.io.Reader
+[Ljava.lang.String;
+java.lang.Exception
+java.io.File
+org.intermine.xml.full.Item
+org.intermine.bio.dataconversion.AliasesTranscriptConverter
+java.util.Map
+java.lang.StringBuilder
+java.lang.String
+org.intermine.util.FormattedTextParser

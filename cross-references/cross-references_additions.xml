@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<classes>
+    <class name="Gene" extends="SequenceFeature" is-interface="true">
+        <attribute name="status" type="java.lang.String"/>
+        <attribute name="source" type="java.lang.String"/>
+        <collection name="dbCrossReferences" referenced-type="xRef"/>
+    </class>
+    <class name="xRef" is-interface="true">
+        <attribute name="name" type="java.lang.String"/>
+        <attribute name="source" type="java.lang.String"/>
+        <attribute name="refereeSource" type="java.lang.String"/>
+        <reference name="organism" referenced-type="Organism"/>
+        <reference name="referrer" referenced-type="Gene"/>
+        <reference name="referee" referenced-type="Gene"/>
+    </class>
+</classes>

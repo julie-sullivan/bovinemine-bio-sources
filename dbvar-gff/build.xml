@@ -1,0 +1,5 @@
+<project name="dbvar-gff" default="default" basedir=".">
+  <description>build, test, package dbvar-gff</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

@@ -1,0 +1,4 @@
+<project name="refseq-noncoding-gff-tasks" default="default" basedir=".">
+  <description>build refseq-noncoding-gff tasks</description>
+  <import file="../../../../imbuild/library.xml"/> 
+</project>

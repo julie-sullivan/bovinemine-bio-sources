@@ -1,0 +1,5 @@
+<project name="evidence-ontology" default="default" basedir=".">
+  <description>build, test, package evidence-ontology</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

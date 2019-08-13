@@ -1,0 +1,4 @@
+<project name="aliases-tasks" default="default" basedir=".">
+  <description>build aliases tasks</description>
+  <import file="../../../../imbuild/library.xml"/> 
+</project>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
+
+<classes>
+    <class name="SequenceFeature" extends="BioEntity" is-interface="true"/>
+    <class name="Gene" extends="SequenceFeature" is-interface="true"/>
+    <class name="Transcript" extends="SequenceFeature" is-interface="true"/>
+    <class name="MRNA" extends="Transcript" is-interface="true"/>
+    <class name="NcRNA" extends="Transcript" is-interface="true"/>
+    <class name="TRNA" extends="NcRNA" is-interface="true"/>
+    <class name="MiRNA" extends="NcRNA" is-interface="true"/>
+    <class name="RRNA" extends="NcRNA" is-interface="true"/>
+    <class name="SnRNA" extends="NcRNA" is-interface="true"/>
+    <class name="SnoRNA" extends="NcRNA" is-interface="true"/>
+    <class name="LincRNA" extends="NcRNA" is-interface="true"/>
+    <class name="LncRNA" extends="NcRNA" is-interface="true"/>
+    <class name="TRJGene" extends="NcRNA" is-interface="true"/>
+    <class name="Ribozyme" extends="NcRNA" is-interface="true"/>
+    <class name="ScaRNA" extends="NcRNA" is-interface="true"/>
+    <class name="SRNA" extends="NcRNA" is-interface="true"/>
+    <class name="TRCGene" extends="NcRNA" is-interface="true"/>
+    <class name="TRVGene" extends="NcRNA" is-interface="true"/>
+    <class name="IGVGene" extends="NcRNA" is-interface="true"/>
+    <class name="IGCGene" extends="NcRNA" is-interface="true"/>
+    <class name="Exon" extends="SequenceFeature" is-interface="true"/>
+    <class name="CDS" extends="SequenceFeature" is-interface="true"/>
+</classes>

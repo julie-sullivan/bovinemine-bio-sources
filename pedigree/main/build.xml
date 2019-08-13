@@ -1,0 +1,4 @@
+<project name="pedigree-tasks" default="default" basedir=".">
+  <description>build pedigree tasks</description>
+  <import file="../../../../imbuild/library.xml"/> 
+</project>

@@ -1,0 +1,4 @@
+<project name="aliasesTranscript-tasks" default="default" basedir=".">
+  <description>build aliasesTranscript tasks</description>
+  <import file="../../../../imbuild/library.xml"/> 
+</project>

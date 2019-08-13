@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
+
+<classes>
+    <class name="BRENDATerm" extends="OntologyTerm" is-interface="true">
+        <collection name="samples" referenced-type="ExpressionMetadata" reverse-reference="brendaTissueOntology"/>
+    </class>
+    <!-- add any <class> elements here -->
+    <class name="ExpressionMetadata" is-interface="true">
+        <attribute name="experiment" type="java.lang.String"/>
+        <collection name="brendaTissueOntology" referenced-type="BRENDATerm" reverse-reference="samples"/>
+        <attribute name="tissue" type="java.lang.String"/>
+        <attribute name="run" type="java.lang.String"/>
+        <attribute name="biosample" type="java.lang.String"/>
+        <attribute name="organSystem" type="java.lang.String"/>
+        <attribute name="btoId" type="java.lang.String"/>
+        <attribute name="btoName" type="java.lang.String"/>
+        <attribute name="btoTopLevel" type="java.lang.String"/>
+        <attribute name="btoAllLevels" type="java.lang.String"/>
+        <attribute name="sex" type="java.lang.String"/>
+        <attribute name="age" type="java.lang.String"/>
+        <attribute name="breed" type="java.lang.String"/>
+        <attribute name="individual" type="java.lang.String"/>
+        <attribute name="lboId" type="java.lang.String"/>
+        <attribute name="releaseDate" type="java.lang.String"/>
+        <attribute name="spots" type="java.lang.String"/>
+        <attribute name="bases" type="java.lang.String"/>
+        <attribute name="spotsWithMates" type="java.lang.String"/>
+        <attribute name="averageReadLength" type="java.lang.String"/>
+        <attribute name="libraryName" type="java.lang.String"/>
+        <attribute name="libraryStrategy" type="java.lang.String"/>
+        <attribute name="librarySelection" type="java.lang.String"/>
+        <attribute name="librarySource" type="java.lang.String"/>
+        <attribute name="libraryLayout" type="java.lang.String"/>
+        <attribute name="platform" type="java.lang.String"/>
+        <attribute name="model" type="java.lang.String"/>
+        <attribute name="sraStudy" type="java.lang.String"/>
+        <attribute name="bioproject" type="java.lang.String"/>
+        <attribute name="sraSample" type="java.lang.String"/>
+        <attribute name="organismName" type="java.lang.String"/>
+        <attribute name="sampleName" type="java.lang.String"/>
+        <attribute name="sraSubmission" type="java.lang.String"/>
+        <!--<attribute name="breed" type="java.lang.String"/>-->
+        <!--<attribute name="strain" type="java.lang.String"/>-->
+        <!--<attribute name="lactationPeriod" type="java.lang.String"/>-->
+        <!--<attribute name="milkFat" type="java.lang.String"/>-->
+        <!--<attribute name="milkProtein" type="java.lang.String"/>-->
+        <!--<attribute name="milkSolid" type="java.lang.String"/>-->
+        <!--<attribute name="milkYield" type="java.lang.String"/>-->
+        <!--<attribute name="milkYieldG" type="java.lang.String"/>-->
+        <!--<attribute name="sampleTaxon" type="java.lang.String"/>-->
+        <!--<attribute name="scientificName" type="java.lang.String"/>-->
+        <!--<attribute name="projectId" type="java.lang.String"/>-->
+        <!--<attribute name="centerName" type="java.lang.String"/>-->
+
+        <!--<attribute name="sraRunId" type="java.lang.String"/>-->
+        <!--<attribute name="sraExperimentId" type="java.lang.String"/>-->
+        <!--<attribute name="ftpLocation" type="java.lang.String"/>-->
+        <!--<attribute name="insertSize" type="java.lang.String"/>-->
+        <!--<attribute name="insertStdDev" type="java.lang.String"/>-->
+        <!--<attribute name="tumor" type="java.lang.String"/>-->
+        <!--<attribute name="sraStudyId" type="java.lang.String"/>-->
+        <!--<attribute name="sraSampleId" type="java.lang.String"/>-->
+        <!--<attribute name="submissionId" type="java.lang.String"/>-->
+        <!--<attribute name="treatment" type="java.lang.String"/>-->
+        <!--<attribute name="stage" type="java.lang.String"/>-->
+
+        <!--<attribute name="tissueType" type="java.lang.String"/>-->
+        <!--<attribute name="objective" type="java.lang.String"/>-->
+        <!--<attribute name="design" type="java.lang.String"/>-->
+        <!--<attribute name="experimentAbstract" type="java.lang.String"/>-->
+
+        <!--<collection name="publications" referenced-type="Publication"/>-->
+        <reference name="organism" referenced-type="Organism"/>
+    </class>
+</classes>
