@@ -1,4 +1,0 @@
-<project name="ogs-gff-tasks" default="default" basedir=".">
-  <description>build ogs-gff tasks</description>
-  <import file="../../../../imbuild/library.xml"/> 
-</project>

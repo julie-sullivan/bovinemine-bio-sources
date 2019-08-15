@@ -1,0 +1,71 @@
+rootProject.name = 'bio-sources'
+include ':bio-source-aliases'
+project(':bio-source-aliases').projectDir = new File(settingsDir, './aliases')
+include ':bio-source-aliasesPolypeptide'
+project(':bio-source-aliasesPolypeptide').projectDir = new File(settingsDir, './aliasesPolypeptide')
+include ':bio-source-aliasesTranscript'
+project(':bio-source-aliasesTranscript').projectDir = new File(settingsDir, './aliasesTranscript')
+include ':bio-source-biocyc'
+project(':bio-source-biocyc').projectDir = new File(settingsDir, './biocyc')
+include ':bio-source-bovine-expression'
+project(':bio-source-bovine-expression').projectDir = new File(settingsDir, './bovine-expression')
+include ':bio-source-bovine-expression-metadata'
+project(':bio-source-bovine-expression-metadata').projectDir = new File(settingsDir, './bovine-expression-metadata')
+include ':bio-source-bovine_fasta'
+project(':bio-source-bovine_fasta').projectDir = new File(settingsDir, './bovine_fasta')
+include ':bio-source-brenda-tissue-ontology'
+project(':bio-source-brenda-tissue-ontology').projectDir = new File(settingsDir, './brenda-tissue-ontology')
+include ':bio-source-broken-ogs'
+project(':bio-source-broken-ogs').projectDir = new File(settingsDir, './broken-ogs')
+include ':bio-source-clinical-measurement-ontology'
+project(':bio-source-clinical-measurement-ontology').projectDir = new File(settingsDir, './clinical-measurement-ontology')
+include ':bio-source-cross-references'
+project(':bio-source-cross-references').projectDir = new File(settingsDir, './cross-references')
+include ':bio-source-custom-gene-info'
+project(':bio-source-custom-gene-info').projectDir = new File(settingsDir, './custom-gene-info')
+include ':bio-source-dbsnp-variation'
+project(':bio-source-dbsnp-variation').projectDir = new File(settingsDir, './dbsnp-variation')
+include ':bio-source-dbvar-gff'
+project(':bio-source-dbvar-gff').projectDir = new File(settingsDir, './dbvar-gff')
+include ':bio-source-ensembl'
+project(':bio-source-ensembl').projectDir = new File(settingsDir, './ensembl')
+include ':bio-source-ensembl-gff'
+project(':bio-source-ensembl-gff').projectDir = new File(settingsDir, './ensembl-gff')
+include ':bio-source-evidence-ontology'
+project(':bio-source-evidence-ontology').projectDir = new File(settingsDir, './evidence-ontology')
+include ':bio-source-gpluse-orthologs'
+project(':bio-source-gpluse-orthologs').projectDir = new File(settingsDir, './gpluse-orthologs')
+include ':bio-source-gpluse-reaction'
+project(':bio-source-gpluse-reaction').projectDir = new File(settingsDir, './gpluse-reaction')
+include ':bio-source-hapmap-gff'
+project(':bio-source-hapmap-gff').projectDir = new File(settingsDir, './hapmap-gff')
+include ':bio-source-kegg-compounds'
+project(':bio-source-kegg-compounds').projectDir = new File(settingsDir, './kegg-compounds')
+include ':bio-source-kegg-metadata'
+project(':bio-source-kegg-metadata').projectDir = new File(settingsDir, './kegg-metadata')
+include ':bio-source-livestock-breed-ontology'
+project(':bio-source-livestock-breed-ontology').projectDir = new File(settingsDir, './livestock-breed-ontology')
+include ':bio-source-livestock-product-trait-ontology'
+project(':bio-source-livestock-product-trait-ontology').projectDir = new File(settingsDir, './livestock-product-trait-ontology')
+include ':bio-source-microarray-probe-gff'
+project(':bio-source-microarray-probe-gff').projectDir = new File(settingsDir, './microarray-probe-gff')
+include ':bio-source-mouse-anatomy-ontology'
+project(':bio-source-mouse-anatomy-ontology').projectDir = new File(settingsDir, './mouse-anatomy-ontology')
+include ':bio-source-ogs-gff'
+project(':bio-source-ogs-gff').projectDir = new File(settingsDir, './ogs-gff')
+include ':bio-source-pedigree'
+project(':bio-source-pedigree').projectDir = new File(settingsDir, './pedigree')
+include ':bio-source-qtl-gff'
+project(':bio-source-qtl-gff').projectDir = new File(settingsDir, './qtl-gff')
+include ':bio-source-refseq-noncoding-gff'
+project(':bio-source-refseq-noncoding-gff').projectDir = new File(settingsDir, './refseq-noncoding-gff')
+include ':bio-source-refseq-proteincoding-gff'
+project(':bio-source-refseq-proteincoding-gff').projectDir = new File(settingsDir, './refseq-proteincoding-gff')
+include ':bio-source-repeat-region-gff'
+project(':bio-source-repeat-region-gff').projectDir = new File(settingsDir, './repeat-region-gff')
+include ':bio-source-treefam-extended'
+project(':bio-source-treefam-extended').projectDir = new File(settingsDir, './treefam-extended')
+include ':bio-source-uber-anatomy-ontology'
+project(':bio-source-uber-anatomy-ontology').projectDir = new File(settingsDir, './uber-anatomy-ontology')
+include ':bio-source-vertebrate-trait-ontology'
+project(':bio-source-vertebrate-trait-ontology').projectDir = new File(settingsDir, './vertebrate-trait-ontology')

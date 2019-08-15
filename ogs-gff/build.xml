@@ -1,5 +1,0 @@
-<project name="ogs-gff" default="default" basedir=".">
-  <description>build, test, package ogs-gff</description>
-  
-  <import file="../../../imbuild/source.xml"/>
-</project>
