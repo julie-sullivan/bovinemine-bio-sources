@@ -11,8 +11,8 @@ include ':bio-source-bovine-expression'
 project(':bio-source-bovine-expression').projectDir = new File(settingsDir, './bovine-expression')
 include ':bio-source-bovine-expression-metadata'
 project(':bio-source-bovine-expression-metadata').projectDir = new File(settingsDir, './bovine-expression-metadata')
-include ':bio-source-bovine_fasta'
-project(':bio-source-bovine_fasta').projectDir = new File(settingsDir, './bovine_fasta')
+include ':bio-source-bovine-fasta'
+project(':bio-source-bovine-fasta').projectDir = new File(settingsDir, './bovine_fasta')
 include ':bio-source-brenda-tissue-ontology'
 project(':bio-source-brenda-tissue-ontology').projectDir = new File(settingsDir, './brenda-tissue-ontology')
 include ':bio-source-broken-ogs'
@@ -27,8 +27,6 @@ include ':bio-source-dbsnp-variation'
 project(':bio-source-dbsnp-variation').projectDir = new File(settingsDir, './dbsnp-variation')
 include ':bio-source-dbvar-gff'
 project(':bio-source-dbvar-gff').projectDir = new File(settingsDir, './dbvar-gff')
-include ':bio-source-ensembl'
-project(':bio-source-ensembl').projectDir = new File(settingsDir, './ensembl')
 include ':bio-source-ensembl-gff'
 project(':bio-source-ensembl-gff').projectDir = new File(settingsDir, './ensembl-gff')
 include ':bio-source-evidence-ontology'
