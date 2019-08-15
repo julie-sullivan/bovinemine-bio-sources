@@ -11,8 +11,8 @@ include ':bio-source-bovine-expression'
 project(':bio-source-bovine-expression').projectDir = new File(settingsDir, './bovine-expression')
 include ':bio-source-bovine-expression-metadata'
 project(':bio-source-bovine-expression-metadata').projectDir = new File(settingsDir, './bovine-expression-metadata')
-//include ':bio-source-bovine-fasta'
-//project(':bio-source-bovine-fasta').projectDir = new File(settingsDir, './bovine-fasta')
+include ':bio-source-bovine-fasta'
+project(':bio-source-bovine-fasta').projectDir = new File(settingsDir, './bovine-fasta')
 include ':bio-source-brenda-tissue-ontology'
 project(':bio-source-brenda-tissue-ontology').projectDir = new File(settingsDir, './brenda-tissue-ontology')
 include ':bio-source-broken-ogs'

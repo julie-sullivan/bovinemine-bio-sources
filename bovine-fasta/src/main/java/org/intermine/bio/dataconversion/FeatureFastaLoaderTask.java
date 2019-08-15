@@ -33,43 +33,41 @@ import org.intermine.objectstore.ObjectStoreException;
  */
 public class FeatureFastaLoaderTask extends FastaLoaderTask
 {
-    private Map<Integer, Organism> organisms = new HashMap<Integer, Organism>();
+    private Map<String, Organism> organisms = new HashMap<String, Organism>();
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected Organism getOrganism(Sequence bioJavaSequence) throws ObjectStoreException {
-//        Annotation anno = bioJavaSequence.getAnnotation();
-//        // description_line is <feature_type>|<identifier>|<description> OS=<organism name> GN=<feature_name>
-//        String header = anno.getProperty("description_line").toString();
-//
-//        final String regexp = "OS\\=\\w+\\s\\w+";
-//        Pattern p = Pattern.compile(regexp);
-//        Matcher m = p.matcher(header);
-//        if (m.find()) {
-//            header = m.group();
-//            String[] bits = header.split("=");
-//            if (bits.length != 2) {
-//                return null;
-//            }
-//
-//            Integer taxonId = getTaxonId(bits[1]);
-//            System.out.println(bits[1]);
-//            //System.exit(0);
-//            if (taxonId == null) {
-//                return null;
-//            }
-//            Organism org = organisms.get(taxonId);
-//            if (org == null) {
-//                System.out.println(taxonId);
-//                org = getDirectDataLoader().createObject(Organism.class);
-//                org.setTaxonId(taxonId);
-//                getDirectDataLoader().store(org);
-//                organisms.put(taxonId, org);
-//            }
-//            return org;
-//        }
+        String header = ((ProteinSequence) bioJavaSequence).getOriginalHeader();
+
+        final String regexp = "OS\\=\\w+\\s\\w+";
+        Pattern p = Pattern.compile(regexp);
+        Matcher m = p.matcher(header);
+        if (m.find()) {
+            header = m.group();
+            String[] bits = header.split("=");
+            if (bits.length != 2) {
+                return null;
+            }
+
+            String taxonId = getTaxonId(bits[1]);
+            System.out.println(bits[1]);
+            //System.exit(0);
+            if (taxonId == null) {
+                return null;
+            }
+            Organism org = organisms.get(taxonId);
+            if (org == null) {
+                System.out.println(taxonId);
+                org = getDirectDataLoader().createObject(Organism.class);
+                org.setTaxonId(taxonId);
+                getDirectDataLoader().store(org);
+                organisms.put(taxonId, org);
+            }
+            return org;
+        }
         return null;
     }
 }

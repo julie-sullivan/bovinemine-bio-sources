@@ -14,6 +14,7 @@
     <reference name="organism" referenced-type="Organism"/>
   <collection name="pathways" referenced-type="Pathway" reverse-reference="compound"/>
 </class>
-
-
+        <class name="Gene" is-interface="true">
+            <collection name="pathways" referenced-type="Pathway" reverse-reference="genes"/>
+        </class>
 </classes>

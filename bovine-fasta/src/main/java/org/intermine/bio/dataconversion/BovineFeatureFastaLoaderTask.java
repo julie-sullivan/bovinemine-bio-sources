@@ -15,9 +15,14 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.tools.ant.BuildException;
 import org.intermine.metadata.Model;
+import org.intermine.metadata.Util;
 import org.intermine.model.InterMineObject;
+import org.intermine.model.bio.BioEntity;
 import org.intermine.model.bio.Chromosome;
+import org.intermine.model.bio.DataSet;
 import org.intermine.model.bio.Location;
 import org.intermine.model.bio.Organism;
 import org.intermine.model.bio.SequenceFeature;
@@ -33,6 +38,7 @@ import org.biojava.nbio.core.sequence.io.FastaReader;
 import org.biojava.nbio.core.sequence.io.FastaReaderHelper;
 import org.biojava.nbio.core.sequence.io.PlainFastaHeaderParser;
 import org.biojava.nbio.core.sequence.template.Sequence;
+import org.intermine.objectstore.query.PendingClob;
 
 /**
  * Code for loading fasta for BovineMine/HymenopteraMine, setting feature attribute from the FASTA header.
@@ -195,8 +201,6 @@ public class BovineFeatureFastaLoaderTask extends FastaLoaderTask
             getDirectDataLoader().store(gene);
         }
         return gene;
-    }   
-
-
+    }
 
 }

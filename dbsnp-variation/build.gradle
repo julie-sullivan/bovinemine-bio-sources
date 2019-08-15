@@ -17,6 +17,12 @@ sourceSets {
     }
 }
 
+dependencies {
+    compile group: 'org.intermine', name: 'bio-source-fasta', version: bioVersion
+    bioModel group: 'org.intermine', name: 'bio-model', version: bioVersion, transitive: false
+}
+
+
 processResources {
     from('.') { include ("*.properties")}
 }

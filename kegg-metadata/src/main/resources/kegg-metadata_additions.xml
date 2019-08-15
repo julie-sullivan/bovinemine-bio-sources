@@ -12,4 +12,5 @@
  <collection name="publications" referenced-type="Publication"/>
  <collection name="goAnnotation" referenced-type="GOAnnotation"/>
 </class>
+    <class name="GOAnnotation" is-interface="true"/>
 </classes>

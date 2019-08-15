@@ -9,42 +9,29 @@
  * information or http://www.gnu.org/copyleft/lesser.html.
  *
  */
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.IllegalAccessException;
 import java.lang.Override;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Set;
 import org.apache.tools.ant.BuildException;
-import org.biojava.bio.BioException;
-import org.biojava.bio.seq.Sequence;
-import org.biojava.bio.seq.SequenceIterator;
-import org.biojava.bio.seq.io.SeqIOTools;
 import java.util.NoSuchElementException;
-
-import java.io.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.biojava.nbio.core.exceptions.ParserException;
 import org.biojava.nbio.core.sequence.DNASequence;
 import org.biojava.nbio.core.sequence.ProteinSequence;
-import org.biojava.nbio.core.sequence.compound.AmbiguityDNACompoundSet;
-import org.biojava.nbio.core.sequence.compound.NucleotideCompound;
-import org.biojava.nbio.core.sequence.io.DNASequenceCreator;
-import org.biojava.nbio.core.sequence.io.FastaReader;
 import org.biojava.nbio.core.sequence.io.FastaReaderHelper;
-import org.biojava.nbio.core.sequence.io.PlainFastaHeaderParser;
 import org.biojava.nbio.core.sequence.template.Sequence;
 import org.intermine.metadata.Model;
 import org.intermine.model.FastPathObject;
 import org.intermine.model.InterMineObject;
 import org.intermine.model.bio.BioEntity;
 import org.intermine.model.bio.DataSet;
-import org.intermine.model.bio.Location;
 import org.intermine.model.bio.Organism;
-import org.intermine.model.bio.SequenceFeature;
 import org.intermine.objectstore.ObjectStore;
 import org.intermine.objectstore.ObjectStoreException;
 import org.intermine.util.DynamicUtil;
@@ -56,7 +43,6 @@ import org.intermine.util.DynamicUtil;
  * This script has been adapted with the help of AIPCDSFastaLoaderTask.java and FlyBaseCDSFastaLoaderTask.java
  */
 public class BovineProteinFastaLoaderTask extends BovineFeatureFastaLoaderTask {
-
     // hashmap to keep track of InterMineObject of type Gene
     private Map<String, InterMineObject> geneIdMap = new HashMap<String, InterMineObject>();
     // hashmap to keep track of InterMineObject of type MRNA
@@ -71,7 +57,7 @@ public class BovineProteinFastaLoaderTask extends BovineFeatureFastaLoaderTask {
                                    BioEntity bioEntity, Organism organism, DataSet dataSet)
             throws ObjectStoreException {
 
-        String header = bioJavaSequence.getAccession().getID();
+        String header = ((DNASequence) bioJavaSequence).getOriginalHeader();
         String proteinIdentifier = getIdentifier(bioJavaSequence);
 
         String geneIdentifier = null;
@@ -80,7 +66,6 @@ public class BovineProteinFastaLoaderTask extends BovineFeatureFastaLoaderTask {
 
         // getting the remaining identifiers from the header, if present
         try {
-            String header = (String) annotation.getProperty("description");
             String[] headerSplitStringList = header.trim().split(" ");
             if (headerSplitStringList.length != 2) {
                 geneIdentifier = headerSplitStringList[0];
@@ -156,9 +141,7 @@ public class BovineProteinFastaLoaderTask extends BovineFeatureFastaLoaderTask {
     @Override
     protected String getIdentifier(Sequence bioJavaSequence) {
         // this method should return the Protein Identifier from the FASTA header
-        Annotation annotation = bioJavaSequence.getAnnotation();
-        String annotationName = bioJavaSequence.getName();
-        String mrnaIdentifier = annotationName.split(" ")[0].trim();
+        String mrnaIdentifier = bioJavaSequence.getAccession().getID();
         return mrnaIdentifier;
     }
 
@@ -214,46 +197,6 @@ public class BovineProteinFastaLoaderTask extends BovineFeatureFastaLoaderTask {
         return mrna;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void processFile(File file) {
-        try {
-            FileReader fileReader = new FileReader(file);
-            BufferedReader reader = new BufferedReader(fileReader);
-
-            System.err .println("reading " + getSequenceType() + " sequence from: " + file);
-
-            SequenceIterator iter =
-                    (SequenceIterator) SeqIOTools.fileToBiojava("fasta", getSequenceType(), reader);
-
-            if (!iter.hasNext()) {
-                System.err .println("no fasta sequences found - exiting");
-                return;
-            }
-
-            while (iter.hasNext()) {
-                Sequence bioJavaSequence = iter.nextSequence();
-                processSequence(getOrganism(bioJavaSequence), bioJavaSequence);
-            }
-            // now storing all the Gene and MRNA objects
-            storePendingObjectsToDataStore();
-            reader.close();
-            fileReader.close();
-        } catch (BioException e) {
-            throw new BuildException("sequence not in fasta format or wrong alphabet for: "
-                    + file, e);
-        } catch (NoSuchElementException e) {
-            throw new BuildException("no fasta sequences in: " + file, e);
-        } catch (FileNotFoundException e) {
-            throw new BuildException("problem reading file - file not found: " + file, e);
-        } catch (ObjectStoreException e) {
-            throw new BuildException("ObjectStore problem while processing: " + file, e);
-        } catch (IOException e) {
-            throw new BuildException("error while closing FileReader for: " + file, e);
-        }
-    }
 
     /**
      * Stores all the created Gene and MRNA objects into the data store
