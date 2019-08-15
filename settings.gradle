@@ -1,4 +1,4 @@
-rootProject.name = 'bio-sources'
+rootProject.name = 'bio-sources-bovinemine'
 include ':bio-source-aliases'
 project(':bio-source-aliases').projectDir = new File(settingsDir, './aliases')
 include ':bio-source-aliasesPolypeptide'
