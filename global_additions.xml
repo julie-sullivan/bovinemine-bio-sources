@@ -1,0 +1,616 @@
+<model name="genomic" package="org.intermine.model.bio">
+<class name="Intron" extends="SequenceFeature" is-interface="true">
+	<collection name="transcripts" referenced-type="Transcript" reverse-reference="introns"/>
+	<collection name="genes" referenced-type="Gene" reverse-reference="introns"/>
+</class>
+<class name="Interaction" is-interface="true">
+	<reference name="participant2" referenced-type="BioEntity"/>
+	<reference name="participant1" referenced-type="BioEntity" reverse-reference="interactions"/>
+	<collection name="details" referenced-type="InteractionDetail" reverse-reference="interaction"/>
+</class>
+<class name="Allele" extends="SequenceCollection" is-interface="true">
+	<reference name="gene" referenced-type="Gene" reverse-reference="alleles"/>
+</class>
+<class name="CDS" extends="SequenceFeature" is-interface="true">
+	<attribute name="hasEarlyStopCodon" type="java.lang.String"/>
+	<attribute name="proteinIdentifier" type="java.lang.String"/>
+	<reference name="gene" referenced-type="Gene" reverse-reference="CDSs"/>
+	<reference name="transcript" referenced-type="Transcript" reverse-reference="CDSs"/>
+	<reference name="protein" referenced-type="Protein" reverse-reference="CDSs"/>
+</class>
+<class name="Ontology" is-interface="true">
+	<attribute name="url" type="java.lang.String"/>
+	<attribute name="name" type="java.lang.String"/>
+</class>
+<class name="EST" extends="Oligo" is-interface="true">
+	<collection name="overlappingESTSets" referenced-type="OverlappingESTSet" reverse-reference="ESTs"/>
+</class>
+<class name="LincRNA" extends="NcRNA" is-interface="true"></class>
+<class name="MatureTranscript" is-interface="true">
+	<attribute name="description" type="java.lang.String"/>
+	<attribute name="mirbaseIdentifier" type="java.lang.String"/>
+	<attribute name="chromosome" type="java.lang.String"/>
+	<attribute name="start" type="java.lang.Integer"/>
+	<attribute name="strand" type="java.lang.Integer"/>
+	<attribute name="end" type="java.lang.Integer"/>
+	<attribute name="transcriptIdentifier" type="java.lang.String"/>
+</class>
+<class name="OrthologueEvidence" is-interface="true">
+	<reference name="evidenceCode" referenced-type="OrthologueEvidenceCode"/>
+	<collection name="publications" referenced-type="Publication"/>
+</class>
+<class name="TransposableElementInsertionSite" extends="SequenceFeature" is-interface="true"></class>
+<class name="CRM" extends="RegulatoryRegion" is-interface="true">
+	<collection name="TFBindingSites" referenced-type="TFBindingSite" reverse-reference="CRM"/>
+</class>
+<class name="PrimaryTranscript" extends="Transcript" is-interface="true">
+	<attribute name="mirbaseIdentifier" type="java.lang.String"/>
+	<collection name="matureTranscripts" referenced-type="MatureTranscript"/>
+</class>
+<class name="GOEvidence" is-interface="true">
+	<attribute name="withText" type="java.lang.String"/>
+	<reference name="code" referenced-type="GOEvidenceCode"/>
+	<collection name="publications" referenced-type="Publication"/>
+	<collection name="with" referenced-type="BioEntity"/>
+</class>
+<class name="GoldenPathFragment" extends="SequenceFeature" is-interface="true"></class>
+<class name="RepeatRegion" extends="SequenceFeature" is-interface="true"></class>
+<class name="LBOTerm" extends="OntologyTerm" is-interface="true"></class>
+<class name="IntergenicRegion" extends="SequenceFeature" is-interface="true">
+	<collection name="adjacentGenes" referenced-type="Gene"/>
+</class>
+<class name="AliasName" is-interface="true">
+	<attribute name="source" type="java.lang.String"/>
+	<attribute name="identifier" type="java.lang.String"/>
+	<attribute name="name" type="java.lang.String"/>
+	<reference name="organism" referenced-type="Organism"/>
+	<collection name="features" referenced-type="SequenceFeature" reverse-reference="aliases"/>
+	<collection name="dataSets" referenced-type="DataSet"/>
+</class>
+<class name="ChromosomalTranslocation" extends="ChromosomeStructureVariation" is-interface="true"></class>
+<class name="ProteinDomainRegion" is-interface="true">
+	<attribute name="identifier" type="java.lang.String"/>
+	<attribute name="start" type="java.lang.Integer"/>
+	<attribute name="database" type="java.lang.String"/>
+	<attribute name="end" type="java.lang.Integer"/>
+	<reference name="protein" referenced-type="Protein" reverse-reference="proteinDomainRegions"/>
+	<reference name="proteinDomain" referenced-type="ProteinDomain"/>
+</class>
+<class name="SnoRNA" extends="NcRNA" is-interface="true"></class>
+<class name="Indel" extends="SequenceAlteration" is-interface="true"></class>
+<class name="Primer" extends="Oligo" is-interface="true"></class>
+<class name="Pathway" is-interface="true">
+	<attribute name="identifier" type="java.lang.String"/>
+	<attribute name="description" type="java.lang.String"/>
+	<attribute name="curated" type="java.lang.Boolean"/>
+	<attribute name="name" type="java.lang.String"/>
+	<attribute name="shortName" type="java.lang.String"/>
+	<reference name="organism" referenced-type="Organism"/>
+	<collection name="genes" referenced-type="Gene" reverse-reference="pathways"/>
+	<collection name="proteins" referenced-type="Protein"/>
+	<collection name="dataSets" referenced-type="DataSet"/>
+</class>
+<class name="QTL" extends="SequenceFeature" is-interface="true">
+	<attribute name="traitId" type="java.lang.String"/>
+	<attribute name="significance" type="java.lang.String"/>
+	<attribute name="flankMarkers" type="java.lang.String"/>
+	<attribute name="likelihoodRatio" type="java.lang.String"/>
+	<attribute name="additiveEffect" type="java.lang.String"/>
+	<attribute name="type" type="java.lang.String"/>
+	<attribute name="testBase" type="java.lang.String"/>
+	<attribute name="geneIdentifier" type="java.lang.String"/>
+	<attribute name="pValue" type="java.lang.String"/>
+	<attribute name="bayesValue" type="java.lang.String"/>
+	<attribute name="lsMeans" type="java.lang.String"/>
+	<attribute name="lodScore" type="java.lang.String"/>
+	<attribute name="qtlId" type="java.lang.String"/>
+	<attribute name="dominanceEffect" type="java.lang.String"/>
+	<attribute name="abbreviation" type="java.lang.String"/>
+	<attribute name="model" type="java.lang.String"/>
+	<attribute name="fStat" type="java.lang.String"/>
+	<attribute name="trait" type="java.lang.String"/>
+	<attribute name="mapType" type="java.lang.String"/>
+	<attribute name="peakCentimorgan" type="java.lang.String"/>
+	<attribute name="breed" type="java.lang.String"/>
+	<reference name="publication" referenced-type="Publication"/>
+	<reference name="cmoName" referenced-type="CMOTerm"/>
+	<reference name="gene" referenced-type="Gene"/>
+	<reference name="ptoName" referenced-type="LPTTerm"/>
+	<reference name="vtoName" referenced-type="VTTerm"/>
+	<collection name="snpAsFlankMarkers" referenced-type="SequenceAlteration"/>
+</class>
+<class name="MiRNA" extends="NcRNA" is-interface="true"></class>
+<class name="ChromosomalInversion" extends="ChromosomeStructureVariation" is-interface="true"></class>
+<class name="IGVGene" extends="NcRNA" is-interface="true"></class>
+<class name="ScaRNA" extends="NcRNA" is-interface="true"></class>
+<class name="InteractionExperiment" is-interface="true">
+	<attribute name="description" type="java.lang.String"/>
+	<attribute name="hostOrganism" type="java.lang.String"/>
+	<attribute name="name" type="java.lang.String"/>
+	<reference name="publication" referenced-type="Publication"/>
+	<collection name="comments" referenced-type="Comment"/>
+	<collection name="interactions" referenced-type="InteractionDetail" reverse-reference="experiment"/>
+	<collection name="participantIdentificationMethods" referenced-type="InteractionTerm"/>
+	<collection name="interactionDetectionMethods" referenced-type="InteractionTerm"/>
+</class>
+<class name="UTR" extends="SequenceFeature" is-interface="true">
+	<reference name="gene" referenced-type="Gene" reverse-reference="UTRs"/>
+	<collection name="transcripts" referenced-type="Transcript" reverse-reference="UTRs"/>
+</class>
+<class name="TFBindingSite" extends="BindingSite RegulatoryRegion" is-interface="true">
+	<reference name="CRM" referenced-type="CRM" reverse-reference="TFBindingSites"/>
+</class>
+<class name="TandemRepeat" extends="SequenceAlteration" is-interface="true"></class>
+<class name="RRNA" extends="NcRNA" is-interface="true"></class>
+<class name="Synonym" is-interface="true">
+	<attribute name="value" type="java.lang.String"/>
+	<reference name="subject" referenced-type="BioEntity" reverse-reference="synonyms"/>
+	<collection name="dataSets" referenced-type="DataSet"/>
+</class>
+<class name="InteractionRegion" is-interface="true">
+	<attribute name="startStatus" type="java.lang.String"/>
+	<attribute name="endStatus" type="java.lang.String"/>
+	<reference name="ontologyTerm" referenced-type="OntologyTerm"/>
+	<reference name="interaction" referenced-type="InteractionDetail" reverse-reference="interactingRegions"/>
+	<collection name="locations" referenced-type="Location"/>
+</class>
+<class name="GOEvidenceCode" is-interface="true">
+	<attribute name="source" type="java.lang.String"/>
+	<attribute name="code" type="java.lang.String"/>
+	<reference name="evidenceOntology" referenced-type="ECOTerm"/>
+</class>
+<class name="Location" is-interface="true">
+	<attribute name="strand" type="java.lang.String"/>
+	<attribute name="doNotComputeOverlaps" type="java.lang.String"/>
+	<attribute name="start" type="java.lang.Integer"/>
+	<attribute name="end" type="java.lang.Integer"/>
+	<reference name="locatedOn" referenced-type="BioEntity" reverse-reference="locatedFeatures"/>
+	<reference name="feature" referenced-type="BioEntity" reverse-reference="locations"/>
+	<collection name="dataSets" referenced-type="DataSet"/>
+</class>
+<class name="GOAnnotation" extends="OntologyAnnotation" is-interface="true">
+	<attribute name="annotationExtension" type="java.lang.String"/>
+	<collection name="evidence" referenced-type="GOEvidence"/>
+</class>
+<class name="GeneFlankingRegion" extends="SequenceFeature" is-interface="true">
+	<attribute name="direction" type="java.lang.String"/>
+	<attribute name="distance" type="java.lang.String"/>
+	<attribute name="includeGene" type="java.lang.Boolean"/>
+	<reference name="gene" referenced-type="Gene" reverse-reference="flankingRegions"/>
+</class>
+<class name="Expression" is-interface="true">
+	<attribute name="experiment" type="java.lang.String"/>
+	<attribute name="FPKM" type="java.lang.Float"/>
+	<attribute name="TPM" type="java.lang.Float"/>
+	<reference name="sampleMetadata" referenced-type="ExpressionMetadata" reverse-reference="isoforms"/>
+	<reference name="organism" referenced-type="Organism"/>
+	<reference name="isoform" referenced-type="Transcript" reverse-reference="expressionValues"/>
+	<reference name="gene" referenced-type="Gene" reverse-reference="expressionValues"/>
+</class>
+<class name="Oligo" extends="SequenceFeature" is-interface="true"></class>
+<class name="MeshTerm" is-interface="true">
+	<attribute name="name" type="java.lang.String"/>
+	<collection name="publications" referenced-type="Publication" reverse-reference="meshTerms"/>
+</class>
+<class name="ChromosomeBand" extends="SequenceFeature" is-interface="true"></class>
+<class name="SOTerm" extends="OntologyTerm" is-interface="true"></class>
+<class name="Comment" is-interface="true">
+	<attribute name="description" type="java.lang.String"/>
+	<attribute name="type" type="java.lang.String"/>
+	<collection name="publications" referenced-type="Publication"/>
+</class>
+<class name="OntologyTermSynonym" is-interface="true">
+	<attribute name="type" type="java.lang.String"/>
+	<attribute name="name" type="java.lang.String"/>
+</class>
+<class name="TRVGene" extends="NcRNA" is-interface="true"></class>
+<class name="MRNA" extends="Transcript" is-interface="true">
+	<collection name="polypeptide" referenced-type="Polypeptide" reverse-reference="mrna"/>
+</class>
+<class name="SRNA" extends="NcRNA" is-interface="true"></class>
+<class name="FivePrimeUTR" extends="UTR" is-interface="true"></class>
+<class name="xRef" is-interface="true">
+	<attribute name="source" type="java.lang.String"/>
+	<attribute name="name" type="java.lang.String"/>
+	<attribute name="refereeSource" type="java.lang.String"/>
+	<reference name="referee" referenced-type="Gene"/>
+	<reference name="organism" referenced-type="Organism"/>
+	<reference name="referrer" referenced-type="Gene"/>
+</class>
+<class name="Substitution" extends="SequenceAlteration" is-interface="true"></class>
+<class name="Component" is-interface="true">
+	<attribute name="name" type="java.lang.String"/>
+	<reference name="protein" referenced-type="Protein" reverse-reference="components"/>
+</class>
+<class name="LPTTerm" extends="OntologyTerm" is-interface="true"></class>
+<class name="TRJGene" extends="NcRNA" is-interface="true"></class>
+<class name="SequenceAlteration" extends="SequenceFeature" is-interface="true">
+	<attribute name="validationStatus" type="java.lang.String"/>
+	<attribute name="referenceAllele" type="java.lang.String"/>
+	<attribute name="heterozygosity" type="java.lang.Float"/>
+	<attribute name="alternateAllele" type="java.lang.String"/>
+	<attribute name="variationType" type="java.lang.String"/>
+	<attribute name="orientation" type="java.lang.String"/>
+	<collection name="consequences" referenced-type="Consequence" reverse-reference="variant"/>
+	<collection name="transcripts" referenced-type="Transcript" reverse-reference="sequenceAlterations"/>
+</class>
+<class name="NcRNA" extends="Transcript" is-interface="true">
+	<attribute name="mirbaseIdentifier" type="java.lang.String"/>
+</class>
+<class name="DataSet" is-interface="true">
+	<attribute name="description" type="java.lang.String"/>
+	<attribute name="url" type="java.lang.String"/>
+	<attribute name="name" type="java.lang.String"/>
+	<attribute name="version" type="java.lang.String"/>
+	<reference name="dataSource" referenced-type="DataSource" reverse-reference="dataSets"/>
+	<reference name="publication" referenced-type="Publication"/>
+	<collection name="bioEntities" referenced-type="BioEntity" reverse-reference="dataSets"/>
+</class>
+<class name="TRNA" extends="NcRNA" is-interface="true"></class>
+<class name="Publication" is-interface="true">
+	<attribute name="year" type="java.lang.Integer"/>
+	<attribute name="issue" type="java.lang.String"/>
+	<attribute name="title" type="java.lang.String"/>
+	<attribute name="pages" type="java.lang.String"/>
+	<attribute name="doi" type="java.lang.String"/>
+	<attribute name="volume" type="java.lang.String"/>
+	<attribute name="journal" type="java.lang.String"/>
+	<attribute name="firstAuthor" type="java.lang.String"/>
+	<attribute name="month" type="java.lang.String"/>
+	<attribute name="abstractText" type="java.lang.String"/>
+	<attribute name="pubMedId" type="java.lang.String"/>
+	<collection name="authors" referenced-type="Author" reverse-reference="publications"/>
+	<collection name="entities" referenced-type="Annotatable" reverse-reference="publications"/>
+	<collection name="crossReferences" referenced-type="DatabaseReference" reverse-reference="subject"/>
+	<collection name="meshTerms" referenced-type="MeshTerm" reverse-reference="publications"/>
+</class>
+<class name="Author" is-interface="true">
+	<attribute name="firstName" type="java.lang.String"/>
+	<attribute name="initials" type="java.lang.String"/>
+	<attribute name="lastName" type="java.lang.String"/>
+	<attribute name="name" type="java.lang.String"/>
+	<collection name="publications" referenced-type="Publication" reverse-reference="authors"/>
+</class>
+<class name="ConsequenceType" is-interface="true">
+	<attribute name="name" type="java.lang.String"/>
+</class>
+<class name="UBERONTerm" extends="OntologyTerm" is-interface="true"></class>
+<class name="ChromosomalDuplication" extends="ChromosomeStructureVariation" is-interface="true"></class>
+<class name="ThreePrimeUTR" extends="UTR" is-interface="true"></class>
+<class name="OntologyAnnotation" is-interface="true">
+	<attribute name="qualifier" type="java.lang.String"/>
+	<reference name="ontologyTerm" referenced-type="OntologyTerm" reverse-reference="ontologyAnnotations"/>
+	<reference name="subject" referenced-type="Annotatable" reverse-reference="ontologyAnnotations"/>
+	<collection name="dataSets" referenced-type="DataSet"/>
+</class>
+
+<class name="Annotatable" is-interface="true">
+	<attribute name="primaryIdentifier" type="java.lang.String"/>
+	<collection name="ontologyAnnotations" referenced-type="OntologyAnnotation"
+				reverse-reference="subject"/>
+	<collection name="publications" referenced-type="Publication" reverse-reference="entities"/>
+</class>
+<class name="Polypeptide" extends="SequenceFeature" is-interface="true">
+	<attribute name="mrnaIdentifier" type="java.lang.String"/>
+	<attribute name="geneIdentifier" type="java.lang.String"/>
+	<reference name="mrna" referenced-type="MRNA" reverse-reference="polypeptide"/>
+	<reference name="gene" referenced-type="Gene" reverse-reference="polypeptides"/>
+</class>
+<class name="Chromosome" extends="SequenceFeature" is-interface="true">
+	<attribute name="tertiaryIdentifier" type="java.lang.String"/>
+	<attribute name="assembly" type="java.lang.String"/>
+</class>
+<class name="ProteinDomain" extends="BioEntity" is-interface="true">
+	<attribute name="description" type="java.lang.String"/>
+	<attribute name="identifier" type="java.lang.String"/>
+	<attribute name="type" type="java.lang.String"/>
+	<attribute name="shortName" type="java.lang.String"/>
+	<collection name="childFeatures" referenced-type="ProteinDomain"/>
+	<collection name="foundIn" referenced-type="ProteinDomain"/>
+	<collection name="parentFeatures" referenced-type="ProteinDomain"/>
+	<collection name="contains" referenced-type="ProteinDomain"/>
+	<collection name="proteinDomainRegions" referenced-type="ProteinDomainRegion" reverse-reference="proteinDomain"/>
+</class>
+<class name="Exon" extends="SequenceFeature" is-interface="true">
+	<reference name="gene" referenced-type="Gene" reverse-reference="exons"/>
+	<collection name="transcripts" referenced-type="Transcript" reverse-reference="exons"/>
+</class>
+<class name="CMOTerm" extends="OntologyTerm" is-interface="true"></class>
+<class name="SnRNA" extends="NcRNA" is-interface="true"></class>
+<class name="DuplicateEntity" is-interface="true">
+	<attribute name="proteinIdentifier" type="java.lang.String"/>
+	<attribute name="geneIdentifier" type="java.lang.String"/>
+	<attribute name="chromosome" type="java.lang.String"/>
+	<attribute name="start" type="java.lang.Integer"/>
+	<attribute name="strand" type="java.lang.Integer"/>
+	<attribute name="end" type="java.lang.Integer"/>
+	<attribute name="transcriptIdentifier" type="java.lang.String"/>
+	<reference name="organism" referenced-type="Organism"/>
+</class>
+<class name="Enhancer" extends="CRM" is-interface="true"></class>
+<class name="OverlappingESTSet" extends="SequenceFeature" is-interface="true">
+	<collection name="ESTs" referenced-type="EST" reverse-reference="overlappingESTSets"/>
+</class>
+<class name="SequenceVariant" is-interface="true">
+	<collection name="genes" referenced-type="Gene"/>
+</class>
+<class name="ReversePrimer" extends="Primer" is-interface="true"></class>
+<class name="Interactor" is-interface="true"></class>
+<class name="DataSource" is-interface="true">
+	<attribute name="description" type="java.lang.String"/>
+	<attribute name="url" type="java.lang.String"/>
+	<attribute name="name" type="java.lang.String"/>
+	<collection name="publications" referenced-type="Publication"/>
+	<collection name="dataSets" referenced-type="DataSet" reverse-reference="dataSource"/>
+</class>
+<class name="MicroarrayOligo" extends="Oligo" is-interface="true"></class>
+<class name="PCRProduct" extends="SequenceFeature" is-interface="true"></class>
+<class name="Probe" extends="SequenceFeature" is-interface="true"></class>
+<class name="PointMutation" extends="SequenceFeature" is-interface="true"></class>
+<class name="ChromosomeStructureVariation" extends="SequenceCollection" is-interface="true"></class>
+<class name="Ribozyme" extends="NcRNA" is-interface="true"></class>
+<class name="NaturalTransposableElement" extends="TransposableElement" is-interface="true"></class>
+<class name="TransposableElement" extends="SequenceFeature" is-interface="true"></class>
+<class name="InteractionDetail" is-interface="true">
+	<attribute name="role2" type="java.lang.String"/>
+	<attribute name="type" type="java.lang.String"/>
+	<attribute name="role1" type="java.lang.String"/>
+	<attribute name="confidenceText" type="java.lang.String"/>
+	<attribute name="name" type="java.lang.String"/>
+	<attribute name="confidence" type="java.lang.Double"/>
+	<attribute name="relationshipType" type="java.lang.String"/>
+	<reference name="experiment" referenced-type="InteractionExperiment" reverse-reference="interactions"/>
+	<reference name="interaction" referenced-type="Interaction" reverse-reference="details"/>
+	<collection name="interactingRegions" referenced-type="InteractionRegion" reverse-reference="interaction"/>
+	<collection name="allInteractors" referenced-type="Interactor"/>
+	<collection name="dataSets" referenced-type="DataSet"/>
+</class>
+<class name="Reaction" is-interface="true">
+	<attribute name="identifier" type="java.lang.String"/>
+	<attribute name="description" type="java.lang.String"/>
+	<attribute name="subsystem" type="java.lang.String"/>
+	<attribute name="name" type="java.lang.String"/>
+	<collection name="genes" referenced-type="Gene" reverse-reference="reactions"/>
+	<collection name="dataSets" referenced-type="DataSet"/>
+</class>
+<class name="DatabaseReference" is-interface="true">
+	<attribute name="identifier" type="java.lang.String"/>
+	<reference name="subject" referenced-type="Publication" reverse-reference="crossReferences"/>
+	<reference name="source" referenced-type="DataSource"/>
+</class>
+<class name="BRENDATerm" extends="OntologyTerm" is-interface="true">
+	<collection name="samples" referenced-type="ExpressionMetadata" reverse-reference="brendaTissueOntology"/>
+</class>
+<class name="ForwardPrimer" extends="Primer" is-interface="true"></class>
+<class name="OntologyRelation" is-interface="true">
+	<attribute name="redundant" type="java.lang.Boolean"/>
+	<attribute name="direct" type="java.lang.Boolean"/>
+	<attribute name="relationship" type="java.lang.String"/>
+	<reference name="parentTerm" referenced-type="OntologyTerm"/>
+	<reference name="childTerm" referenced-type="OntologyTerm"/>
+</class>
+<class name="CrossReference" is-interface="true">
+	<attribute name="identifier" type="java.lang.String"/>
+	<reference name="source" referenced-type="DataSource"/>
+	<reference name="subject" referenced-type="BioEntity" reverse-reference="crossReferences"/>
+</class>
+<class name="MATerm" extends="OntologyTerm" is-interface="true"></class>
+<class name="TRCGene" extends="NcRNA" is-interface="true"></class>
+<class name="Homologue" is-interface="true">
+	<attribute name="homologyType" type="java.lang.String"/>
+	<attribute name="lastCommonAncestor" type="java.lang.String"/>
+	<attribute name="type" type="java.lang.String"/>
+	<attribute name="bootstrapScore" type="java.lang.Integer"/>
+	<attribute name="confidence" type="java.lang.String"/>
+	<attribute name="clusterId" type="java.lang.String"/>
+	<reference name="gene" referenced-type="Gene" reverse-reference="homologues"/>
+	<reference name="homologue" referenced-type="Gene"/>
+	<collection name="evidence" referenced-type="OrthologueEvidence"/>
+	<collection name="crossReferences" referenced-type="CrossReference"/>
+	<collection name="dataSets" referenced-type="DataSet"/>
+</class>
+<class name="ExpressionMetadata" is-interface="true">
+	<attribute name="sampleName" type="java.lang.String"/>
+	<attribute name="sraSubmission" type="java.lang.String"/>
+	<attribute name="releaseDate" type="java.lang.String"/>
+	<attribute name="btoTopLevel" type="java.lang.String"/>
+	<attribute name="organismName" type="java.lang.String"/>
+	<attribute name="organSystem" type="java.lang.String"/>
+	<attribute name="experiment" type="java.lang.String"/>
+	<attribute name="lboId" type="java.lang.String"/>
+	<attribute name="sex" type="java.lang.String"/>
+	<attribute name="btoId" type="java.lang.String"/>
+	<attribute name="spotsWithMates" type="java.lang.String"/>
+	<attribute name="libraryName" type="java.lang.String"/>
+	<attribute name="librarySelection" type="java.lang.String"/>
+	<attribute name="spots" type="java.lang.String"/>
+	<attribute name="libraryStrategy" type="java.lang.String"/>
+	<attribute name="run" type="java.lang.String"/>
+	<attribute name="breed" type="java.lang.String"/>
+	<attribute name="libraryLayout" type="java.lang.String"/>
+	<attribute name="individual" type="java.lang.String"/>
+	<attribute name="bases" type="java.lang.String"/>
+	<attribute name="btoName" type="java.lang.String"/>
+	<attribute name="bioproject" type="java.lang.String"/>
+	<attribute name="tissue" type="java.lang.String"/>
+	<attribute name="model" type="java.lang.String"/>
+	<attribute name="biosample" type="java.lang.String"/>
+	<attribute name="age" type="java.lang.String"/>
+	<attribute name="averageReadLength" type="java.lang.String"/>
+	<attribute name="librarySource" type="java.lang.String"/>
+	<attribute name="platform" type="java.lang.String"/>
+	<attribute name="btoAllLevels" type="java.lang.String"/>
+	<attribute name="sraStudy" type="java.lang.String"/>
+	<attribute name="sraSample" type="java.lang.String"/>
+	<reference name="organism" referenced-type="Organism"/>
+	<collection name="isoforms" referenced-type="Expression" reverse-reference="sampleMetadata"/>
+	<collection name="brendaTissueOntology" referenced-type="BRENDATerm" reverse-reference="samples"/>
+</class>
+<class name="Protein" extends="BioEntity" is-interface="true">
+	<attribute name="md5checksum" type="java.lang.String"/>
+	<attribute name="primaryAccession" type="java.lang.String"/>
+	<attribute name="molecularWeight" type="java.lang.Double"/>
+	<attribute name="ecNumber" type="java.lang.String"/>
+	<attribute name="length" type="java.lang.Integer"/>
+	<attribute name="isFragment" type="java.lang.Boolean"/>
+	<attribute name="uniprotAccession" type="java.lang.String"/>
+	<attribute name="isUniprotCanonical" type="java.lang.Boolean"/>
+	<attribute name="uniprotName" type="java.lang.String"/>
+	<reference name="canonicalProtein" referenced-type="Protein" reverse-reference="isoforms"/>
+	<reference name="sequence" referenced-type="Sequence"/>
+	<collection name="CDSs" referenced-type="CDS" reverse-reference="protein"/>
+	<collection name="comments" referenced-type="Comment"/>
+	<collection name="ecNumbers" referenced-type="ECNumber" reverse-reference="proteins"/>
+	<collection name="genes" referenced-type="Gene" reverse-reference="proteins"/>
+	<collection name="isoforms" referenced-type="Protein" reverse-reference="canonicalProtein"/>
+	<collection name="keywords" referenced-type="OntologyTerm"/>
+	<collection name="components" referenced-type="Component" reverse-reference="protein"/>
+	<collection name="proteinDomainRegions" referenced-type="ProteinDomainRegion" reverse-reference="protein"/>
+	<collection name="pathways" referenced-type="Pathway"/>
+	<collection name="transcripts" referenced-type="Transcript" reverse-reference="protein"/>
+	<collection name="features" referenced-type="UniProtFeature" reverse-reference="protein"/>
+</class>
+<class name="OntologyTerm" is-interface="true">
+	<attribute name="identifier" type="java.lang.String"/>
+	<attribute name="description" type="java.lang.String"/>
+	<attribute name="obsolete" type="java.lang.Boolean"/>
+	<attribute name="name" type="java.lang.String"/>
+	<attribute name="namespace" type="java.lang.String"/>
+	<reference name="ontology" referenced-type="Ontology"/>
+	<collection name="relations" referenced-type="OntologyRelation"/>
+	<collection name="synonyms" referenced-type="OntologyTermSynonym"/>
+	<collection name="ontologyAnnotations" referenced-type="OntologyAnnotation" reverse-reference="ontologyTerm"/>
+	<collection name="parents" referenced-type="OntologyTerm"/>
+	<collection name="dataSets" referenced-type="DataSet"/>
+	<collection name="crossReferences" referenced-type="OntologyTerm"/>
+</class>
+<class name="GOTerm" extends="OntologyTerm" is-interface="true"></class>
+<class name="Organism" is-interface="true">
+	<attribute name="species" type="java.lang.String"/>
+	<attribute name="genus" type="java.lang.String"/>
+	<attribute name="taxonId" type="java.lang.String"/>
+	<attribute name="name" type="java.lang.String"/>
+	<attribute name="commonName" type="java.lang.String"/>
+	<attribute name="shortName" type="java.lang.String"/>
+</class>
+<class name="Gene" extends="SequenceFeature" is-interface="true">
+	<attribute name="briefDescription" type="java.lang.String"/>
+	<attribute name="description" type="java.lang.String"/>
+	<attribute name="biotype" type="java.lang.String"/>
+	<reference name="upstreamIntergenicRegion" referenced-type="IntergenicRegion"/>
+	<reference name="downstreamIntergenicRegion" referenced-type="IntergenicRegion"/>
+	<collection name="flankingRegions" referenced-type="GeneFlankingRegion" reverse-reference="gene"/>
+	<collection name="duplicateEntities" referenced-type="DuplicateEntity"/>
+	<collection name="introns" referenced-type="Intron" reverse-reference="genes"/>
+	<collection name="proteins" referenced-type="Protein" reverse-reference="genes"/>
+	<collection name="CDSs" referenced-type="CDS" reverse-reference="gene"/>
+	<collection name="homologues" referenced-type="Homologue" reverse-reference="gene"/>
+	<collection name="exons" referenced-type="Exon" reverse-reference="gene"/>
+	<collection name="pathways" referenced-type="Pathway" reverse-reference="genes"/>
+	<collection name="reactions" referenced-type="Reaction" reverse-reference="genes"/>
+	<collection name="expressionValues" referenced-type="Expression" reverse-reference="gene"/>
+	<collection name="UTRs" referenced-type="UTR" reverse-reference="gene"/>
+	<collection name="transcripts" referenced-type="Transcript" reverse-reference="gene"/>
+	<collection name="alleles" referenced-type="Allele" reverse-reference="gene"/>
+	<collection name="polypeptides" referenced-type="Polypeptide" reverse-reference="gene"/>
+	<collection name="regulatoryRegions" referenced-type="RegulatoryRegion" reverse-reference="gene"/>
+	<collection name="goAnnotation" referenced-type="GOAnnotation"/>
+</class>
+<class name="ChromosomalDeletion" extends="ChromosomeStructureVariation" is-interface="true"></class>
+<class name="ECOTerm" extends="OntologyTerm" is-interface="true"></class>
+<class name="SequenceFeature" extends="BioEntity" is-interface="true">
+	<attribute name="source" type="java.lang.String"/>
+	<attribute name="score" type="java.lang.Double"/>
+	<attribute name="scoreType" type="java.lang.String"/>
+	<attribute name="status" type="java.lang.String"/>
+	<attribute name="length" type="java.lang.Integer"/>
+	<reference name="sequenceOntologyTerm" referenced-type="SOTerm"/>
+	<reference name="chromosomeLocation" referenced-type="Location"/>
+	<reference name="sequence" referenced-type="Sequence"/>
+	<reference name="chromosome" referenced-type="Chromosome"/>
+	<collection name="overlappingFeatures" referenced-type="SequenceFeature"/>
+	<collection name="childFeatures" referenced-type="SequenceFeature"/>
+	<collection name="dbCrossReferences" referenced-type="xRef"/>
+	<collection name="aliases" referenced-type="AliasName" reverse-reference="features"/>
+</class>
+<class name="Consequence" is-interface="true">
+	<attribute name="rsId" type="java.lang.String"/>
+	<attribute name="cdsPosition" type="java.lang.String"/>
+	<attribute name="referenceResidue" type="java.lang.String"/>
+	<attribute name="aminoAcidPosition" type="java.lang.String"/>
+	<attribute name="siftQualitativePrediction" type="java.lang.String"/>
+	<attribute name="referenceCodon" type="java.lang.String"/>
+	<attribute name="cdnaPosition" type="java.lang.String"/>
+	<attribute name="alternateCodon" type="java.lang.String"/>
+	<attribute name="proteinIdentifier" type="java.lang.String"/>
+	<attribute name="siftNumericalValue" type="java.lang.String"/>
+	<attribute name="alternateAllele" type="java.lang.String"/>
+	<attribute name="alternateResidue" type="java.lang.String"/>
+	<attribute name="transcriptIdentifier" type="java.lang.String"/>
+	<reference name="variant" referenced-type="SequenceAlteration" reverse-reference="consequences"/>
+	<reference name="transcript" referenced-type="Transcript"/>
+	<collection name="consequenceTypes" referenced-type="ConsequenceType"/>
+</class>
+<class name="UniProtFeature" is-interface="true">
+	<attribute name="begin" type="java.lang.Integer"/>
+	<attribute name="description" type="java.lang.String"/>
+	<attribute name="type" type="java.lang.String"/>
+	<attribute name="end" type="java.lang.Integer"/>
+	<reference name="feature" referenced-type="OntologyTerm"/>
+	<reference name="protein" referenced-type="Protein" reverse-reference="features"/>
+</class>
+<class name="RegulatoryRegion" extends="SequenceFeature" is-interface="true">
+	<reference name="gene" referenced-type="Gene" reverse-reference="regulatoryRegions"/>
+</class>
+<class name="IGCGene" extends="NcRNA" is-interface="true"></class>
+<class name="CDNAClone" extends="SequenceFeature" is-interface="true"></class>
+<class name="BindingSite" extends="SequenceFeature" is-interface="true"></class>
+<class name="InteractionTerm" extends="OntologyTerm" is-interface="true"></class>
+<class name="ECNumber" is-interface="true">
+	<attribute name="identifier" type="java.lang.String"/>
+	<attribute name="description" type="java.lang.String"/>
+	<collection name="proteins" referenced-type="Protein" reverse-reference="ecNumbers"/>
+</class>
+<class name="OrthologueEvidenceCode" is-interface="true">
+	<attribute name="abbreviation" type="java.lang.String"/>
+	<attribute name="name" type="java.lang.String"/>
+</class>
+<class name="SNP" extends="SequenceAlteration" is-interface="true"></class>
+<class name="BioEntity" extends="Annotatable" is-interface="true">
+	<attribute name="symbol" type="java.lang.String"/>
+	<attribute name="name" type="java.lang.String"/>
+	<attribute name="primaryIdentifier" type="java.lang.String"/>
+	<attribute name="secondaryIdentifier" type="java.lang.String"/>
+	<reference name="organism" referenced-type="Organism"/>
+	<collection name="interactions" referenced-type="Interaction" reverse-reference="participant1"/>
+	<collection name="locations" referenced-type="Location" reverse-reference="feature"/>
+	<collection name="synonyms" referenced-type="Synonym" reverse-reference="subject"/>
+	<collection name="crossReferences" referenced-type="CrossReference" reverse-reference="subject"/>
+	<collection name="dataSets" referenced-type="DataSet" reverse-reference="bioEntities"/>
+	<collection name="locatedFeatures" referenced-type="Location" reverse-reference="locatedOn"/>
+</class>
+<class name="LncRNA" extends="NcRNA" is-interface="true"></class>
+<class name="VTTerm" extends="OntologyTerm" is-interface="true"></class>
+<class name="SequenceCollection" extends="BioEntity" is-interface="true">
+	<reference name="sequenceOntologyTerm" referenced-type="SOTerm"/>
+</class>
+<class name="Transcript" extends="SequenceFeature" is-interface="true">
+	<attribute name="proteinIdentifier" type="java.lang.String"/>
+	<attribute name="description" type="java.lang.String"/>
+	<attribute name="biotype" type="java.lang.String"/>
+	<reference name="gene" referenced-type="Gene" reverse-reference="transcripts"/>
+	<reference name="protein" referenced-type="Protein" reverse-reference="transcripts"/>
+	<collection name="introns" referenced-type="Intron" reverse-reference="transcripts"/>
+	<collection name="exons" referenced-type="Exon" reverse-reference="transcripts"/>
+	<collection name="CDSs" referenced-type="CDS" reverse-reference="transcript"/>
+	<collection name="UTRs" referenced-type="UTR" reverse-reference="transcripts"/>
+	<collection name="sequenceAlterations" referenced-type="SequenceAlteration" reverse-reference="transcripts"/>
+	<collection name="expressionValues" referenced-type="Expression" reverse-reference="isoform"/>
+</class>
+<class name="Sequence" is-interface="true">
+	<attribute name="md5checksum" type="java.lang.String"/>
+	<attribute name="residues" type="org.intermine.objectstore.query.ClobAccess"/>
+	<attribute name="length" type="int"/>
+</class>
+<class name="ChromosomalTransposition" extends="ChromosomeStructureVariation" is-interface="true"></class>
+</model>

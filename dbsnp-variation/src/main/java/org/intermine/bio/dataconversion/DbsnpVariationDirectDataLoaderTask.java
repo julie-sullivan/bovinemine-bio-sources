@@ -61,7 +61,7 @@ public class DbsnpVariationDirectDataLoaderTask extends FileDirectDataLoaderTask
     private static final String DATASET_TITLE = "dbSNP (build 147) variants and variant annotations";
     private static final String DATA_SOURCE_NAME = "ensembl dbSNP";
     private static final Logger LOG = Logger.getLogger(DbsnpVariationDirectDataLoaderTask.class);
-    private Integer taxonId = 9913;
+    private String taxonId = "9913";
     final static String[] expectedHeaders = {
         "#CHROM",
         "POS",
