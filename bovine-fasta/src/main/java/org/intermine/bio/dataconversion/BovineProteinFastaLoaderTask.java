@@ -27,8 +27,16 @@ import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.biojava.bio.Annotation;
-import org.biojava.bio.seq.Sequence;
+import org.biojava.nbio.core.exceptions.ParserException;
+import org.biojava.nbio.core.sequence.DNASequence;
+import org.biojava.nbio.core.sequence.ProteinSequence;
+import org.biojava.nbio.core.sequence.compound.AmbiguityDNACompoundSet;
+import org.biojava.nbio.core.sequence.compound.NucleotideCompound;
+import org.biojava.nbio.core.sequence.io.DNASequenceCreator;
+import org.biojava.nbio.core.sequence.io.FastaReader;
+import org.biojava.nbio.core.sequence.io.FastaReaderHelper;
+import org.biojava.nbio.core.sequence.io.PlainFastaHeaderParser;
+import org.biojava.nbio.core.sequence.template.Sequence;
 import org.intermine.metadata.Model;
 import org.intermine.model.FastPathObject;
 import org.intermine.model.InterMineObject;
@@ -63,7 +71,7 @@ public class BovineProteinFastaLoaderTask extends BovineFeatureFastaLoaderTask {
                                    BioEntity bioEntity, Organism organism, DataSet dataSet)
             throws ObjectStoreException {
 
-        Annotation annotation = bioJavaSequence.getAnnotation();
+        String header = bioJavaSequence.getAccession().getID();
         String proteinIdentifier = getIdentifier(bioJavaSequence);
 
         String geneIdentifier = null;

@@ -1,9 +1,0 @@
-||:org.intermine.bio.dataconversion.MicroarrayProbeGffGFF3RecordHandler
-java.util.List
-java.util.Iterator
-org.intermine.bio.dataconversion.GFF3RecordHandler
-org.intermine.bio.io.gff3.GFF3Record
-org.intermine.bio.dataconversion.MicroarrayProbeGffGFF3RecordHandler
-java.util.Map
-java.lang.String
-org.intermine.xml.full.Item

@@ -23,6 +23,17 @@ import org.intermine.model.bio.Organism;
 import org.intermine.model.bio.SequenceFeature;
 import org.intermine.objectstore.ObjectStoreException;
 
+import org.biojava.nbio.core.exceptions.ParserException;
+import org.biojava.nbio.core.sequence.DNASequence;
+import org.biojava.nbio.core.sequence.ProteinSequence;
+import org.biojava.nbio.core.sequence.compound.AmbiguityDNACompoundSet;
+import org.biojava.nbio.core.sequence.compound.NucleotideCompound;
+import org.biojava.nbio.core.sequence.io.DNASequenceCreator;
+import org.biojava.nbio.core.sequence.io.FastaReader;
+import org.biojava.nbio.core.sequence.io.FastaReaderHelper;
+import org.biojava.nbio.core.sequence.io.PlainFastaHeaderParser;
+import org.biojava.nbio.core.sequence.template.Sequence;
+
 /**
  * Code for loading fasta for BovineMine/HymenopteraMine, setting feature attribute from the FASTA header.
  * This script has been adapted from AIPFeatureFastaLoaderTask.java and FlyBaseFeatureFastaLoaderTask.java
